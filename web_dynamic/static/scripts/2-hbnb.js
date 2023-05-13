@@ -1,8 +1,8 @@
-$(document).ready(function () {
-  $('input[type=checkbox]').click(function () {
+$(document).ready(() => {
+  $('input[type=checkbox]').on('click', () => {
     const myListName = [];
     const myId = [];
-    $('input[type=checkbox]:checked').each(function () {
+    $('input[type=checkbox]:checked').each(() => {
       myListName.push($(this).attr('data-name'));
       myId.push($(this).attr('data-id'));
     });

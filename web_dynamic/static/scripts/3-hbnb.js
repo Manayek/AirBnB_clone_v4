@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  $('input[type=checkbox]').click(function () {
+  $('input[type=checkbox]').on('click', () => {
     const myListName = [];
     const myId = [];
-    $('input[type=checkbox]:checked').each(function () {
+    $('input[type=checkbox]:checked').each(() => {
       myListName.push($(this).attr('data-name'));
       myId.push($(this).attr('data-id'));
     });
@@ -18,12 +18,11 @@ $(document).ready(function () {
 $.ajax({
   url: 'http://0.0.0.0:5001/api/v1/status/',
   type: 'GET',
-  dataType: 'json',
-  success: function (json) {
+  success: json => {
     $('#api_status').addClass('available');
   },
 
-  error: function (xhr, status) {
+  error: (xhr, status) => {
     console.log('error ' + xhr);
   }
 });

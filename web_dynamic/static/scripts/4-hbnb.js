@@ -1,11 +1,11 @@
-$(document).ready(function () {
+$(document).ready(() => {
   let myId = [];
 
-  $('input[type=checkbox]').click(function () {
+  $('input[type=checkbox]').on('click', () => {
     const myListName = [];
     myId = [];
 
-    $('input[type=checkbox]:checked').each(function () {
+    $('input[type=checkbox]:checked').each(() => {
       myListName.push($(this).attr('data-name'));
       myId.push($(this).attr('data-id'));
     });
@@ -17,13 +17,13 @@ $(document).ready(function () {
     console.log(myId);
   });
 
-  $('.filters button').click(function (event) {
+  $('.filters button').on('click', event => {
     event.preventDefault();
 
     $('.places').text('');
 
-    const obj = {};
-    obj.amenities = myId;
+    let $obj = {};
+    $obj.amenities = myId;
     listPlaces(JSON.stringify(obj));
   });
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
     url: 'http://0.0.0.0:5001/api/v1/status/',
     type: 'GET',
     dataType: 'json',
-    success: function (json) {
+    success: json => {
       $('#api_status').addClass('available');
     },
 
@@ -50,7 +50,7 @@ function listPlaces (amenities = '{}') {
     dataType: 'json',
     data: amenities,
     contentType: 'application/json; charset=utf-8',
-    success: function (places) {
+    success: (places) => {
       for (let i = 0; i < places.length; i++) {
         $('.places').append(`
 <article>
