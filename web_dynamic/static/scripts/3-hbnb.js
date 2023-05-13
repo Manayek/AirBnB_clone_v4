@@ -34,7 +34,7 @@ $.ajax({
   dataType: 'json',
   data: '{}',
   contentType: 'application/json; charset=utf-8',
-  success: function (places) {
+  success: places => {
     for (let i = 0; i < places.length; i++) {
       $('.places').append(`<article>
 <div class="title_box">
@@ -58,7 +58,7 @@ ${places[i].description}
 `);
     }
   },
-  error: function (xhr, status) {
+  error: (xhr, status) => {
     console.log('error ' + status);
   }
 });
