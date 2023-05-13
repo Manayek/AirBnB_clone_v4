@@ -1,11 +1,16 @@
-$(document).ready(function () {
-  $('input[type=checkbox]').click(function () {
-    const myListName = [];
-    const myId = [];
-    $('input[type=checkbox]:checked').each(function () {
-      myListName.push($(this).attr('data-name'));
-      myId.push($(this).attr('data-id'));
+$(document).ready(() => {
+  $('input[type=checkbox]').on('click', () => {
+    const $myListName = [];
+    const $myId = [];
+  
+    // add the checked box to a list
+    $('input[type=checkbox]:checked').each(() => {
+      $myListName.push($(this).attr('data-name'));
+      $myId.push($(this).attr('data-id'));
     });
+
+    /* if nothing was checked, then set h4 to $nbsp
+    else displayed the checked items */
     if (myListName.length === 0) {
       $('.amenities h4').html('&nbsp;');
     } else {

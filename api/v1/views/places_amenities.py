@@ -24,6 +24,8 @@ def get_place_amenities(place_id):
 
     if environ.get('HBNB_TYPE_STORAGE') == "db":
         amenities = [amenity.to_dict() for amenity in place.amenities]
+        """This means that place.amenities attributes stores amenity obj
+        as values for database storage."""
     else:
         amenities = [storage.get(Amenity, amenity_id).to_dict()
                      for amenity_id in place.amenity_ids]
